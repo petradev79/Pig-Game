@@ -1,0 +1,445 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    background-image: url("../img/back.png");
+    background-size: cover;
+    background-position: center;
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    height: 100vh;
+    color: #555;
+}
+
+/**********************************************
+*** GAME
+**********************************************/
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255, .8);
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 50%;
+    height: 100%;
+    max-height: 600px;
+    padding: 50px 0 130px 0;
+}
+
+@media all and (min-width: 600px) {
+    .player-0-panel,
+    .player-1-panel {
+        padding: 100px;
+    }
+}
+
+
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.player-name {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+@media all and (min-width: 600px) {
+    .player-name {
+        font-size: 30px;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .player-name {
+        font-size: 40px;
+    }
+}
+
+.player-score {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 100;
+    color: #EB4D4D;
+    margin-bottom: 65px;
+}
+
+@media all and (min-width: 1000px) {
+    .player-score {
+        font-size: 80px;
+        margin-bottom: 130px;
+    }
+}
+
+.active { background-color: rgb(240, 233, 233); }
+.active .player-name { font-weight: 300; }
+
+.active .player-name::after {
+    content: "\2022";
+    font-size: 23.5px;
+    position: absolute;
+    color: #EB4D4D;
+    top: -3.5px;
+    right: 5px;
+}
+
+@media all and (min-width: 600px) {
+    .active .player-name::after {
+        font-size: 47px;
+        top: -10px;
+        right: -10px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .active .player-name::after {
+        top: -7px;
+        right: 10px;
+    }
+}
+
+.player-current-box {
+    background-color: #EB4D4D;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 6px;
+    text-align: center;
+}
+
+@media all and (min-width: 600px) {
+    .player-current-box {
+        padding: 10px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .player-current-box {
+        padding: 12px;
+    }
+}
+
+.player-current-label {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-size: 10px;
+    color: #222;
+}
+
+@media all and (min-width: 600px) {
+    .player-current-label {
+        font-size: 12px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .player-current-label {
+        font-size: 12px;
+    }
+}
+
+.player-current-score {
+    font-size: 20px;
+}
+
+@media all and (min-width: 600px) {
+    .player-current-score {
+        font-size: 30px;
+    }
+}
+
+button {
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+@media all and (min-width: 600px) {
+    button {
+        font-size: 14px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    button {
+        font-size: 20px;
+        width: 200px;
+    }
+}
+
+button:hover { font-weight: 600; }
+
+@media all and (min-width: 1000px) {
+    button:hover i { margin-right: 20px; }
+}
+
+button:focus { outline: none; }
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    margin-right: 7.5px;
+    font-size: 15px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+@media all and (min-width: 600px) {
+    i {
+        margin-top: 0;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    i {
+        margin-right: 15px;
+        font-size: 32px;
+        margin-top: -4px;
+    }
+}
+
+.btn-new { top: 25px; }
+.btn-roll { top: 285px; }
+.btn-hold { top: 315px; }
+
+@media all and (min-width: 1000px) {
+    .btn-new { top: 45px; }
+    .btn-roll { top: 403px; }
+    .btn-hold { top: 467px; }
+}
+
+.dice {
+    position: absolute;
+    left: 50%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 50px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+@media all and (min-width: 1000px) {
+    .dice {
+        height: 100px;
+    }
+}
+
+.winner { background-color: #f7f7f7; }
+.winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+/**********************************************
+*** FOR CHALLENGES
+**********************************************/
+
+.final-score {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 345px;
+    background-color: transparent;
+    color: #555;
+    border: 1px solid #EB4D4D;
+    font-size: 10px;
+    font-family: 'Lato';
+    text-align: center;
+    padding: 5px;
+    width: 80px;
+    text-transform: uppercase;
+}
+
+@media all and (min-width: 1000px) {
+    .final-score {
+        top: 520px;
+        font-size: 18px;
+        padding: 10px;
+        width: 160px;
+    }
+}
+
+.final-score:focus { outline: none; }
+
+#dice-1 { top: 120px; }
+#dice-2 { top: 200px; }
+
+@media all and (min-width: 1000px) {
+    #dice-2 { top: 250px; }
+}
+
+/**********************************************
+*** MY ACCESSORIES
+**********************************************/
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: snow;
+    z-index: 2;
+}
+
+.btn-img {
+    height: 20px;
+    margin-left: 10px;
+}
+
+.description-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(83, 63, 121, 0.9);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    color: snow;
+}
+
+.hidden {
+    top: -100%;
+}
+
+.description-menu.up {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+}
+
+.description-menu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    -webkit-transition: all .3s .5s ease-in-out;
+    transition: all .3s .5s ease-in-out;
+}
+
+@media all and (min-width: 600px) {
+    .description-menu {
+        width: auto;
+    }
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+@media all and (min-width: 600px) {
+    .title {
+        margin-bottom: 50px;
+    }
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+@media all and (min-width: 600px) {
+    h1 {
+        font-size: 70px;
+        margin-bottom: 30px;
+    }
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+@media all and (min-width: 600px) {
+    h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+h3 {
+    font-size: 16px;
+    font-style: italic;
+}
+
+@media all and (min-width: 600px) {
+    h3 {
+        font-size: 22px;
+    }
+}
+
+ol {
+    padding-left: 10px;
+}
+
+li {
+    font-size: 14px;
+    line-height: 18px;
+     
+}
+
+@media all and (min-width: 600px) {
+    li {
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+
+li:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+@media all and (min-width: 600px) {
+    li:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+
+          
